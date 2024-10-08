@@ -1,0 +1,13 @@
+<h2>Seleccionar Regalo</h2>
+
+<ul>
+  <li *ngFor="let regalo of listaRegalos">
+    <span [ngClass]="{ seleccionado: regalo.seleccionado }">
+      {{ regalo.nombre }} - {{ regalo.descripcion }}
+    </span>
+    <button *ngIf="!regalo.seleccionado" (click)="seleccionarRegalo(regalo)">
+      Seleccionar
+    </button>
+    <span *ngIf="regalo.seleccionado">Ya seleccionado</span>
+  </li>
+</ul>

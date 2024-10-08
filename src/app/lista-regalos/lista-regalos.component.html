@@ -1,0 +1,31 @@
+<form (ngSubmit)="agregarRegalo()">
+  <div>
+    <label for="nombre">Nombre del regalo:</label>
+    <input
+      type="text"
+      id="nombre"
+      [(ngModel)]="nuevoRegalo.nombre"
+      name="nombre"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="descripcion">Descripción:</label>
+    <input
+      type="text"
+      id="descripcion"
+      [(ngModel)]="nuevoRegalo.descripcion"
+      name="descripcion"
+      required
+    />
+  </div>
+
+  <button type="submit">Agregar Regalo</button>
+</form>
+
+<ul>
+  <li *ngFor="let regalo of regalos">
+    {{ regalo.nombre }} - {{ regalo.descripcion }}
+  </li>
+</ul>

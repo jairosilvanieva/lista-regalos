@@ -1,0 +1,47 @@
+{
+  "anfitriones": [
+    {
+      "id": "2a15",
+      "nombre": "jairo antonio",
+      "email": "jairo_s_22@hotmail.com",
+      "password": "1234"
+    }
+  ],
+  "eventos": [
+    {
+      "id": "8d2e",
+      "tipoEvento": "cumpleaños",
+      "lugar": "mii casa",
+      "fecha": "2024-10-09",
+      "hora": "21:02",
+      "descripcion": "",
+      "codigo": "AQO2GZFD",
+      "anfitrionId": "351c"
+    },
+    {
+      "id": "3fdc",
+      "tipoEvento": "bautismo",
+      "lugar": "la igle",
+      "fecha": "2024-10-10",
+      "hora": "18:05",
+      "descripcion": "",
+      "codigo": "ZB2R947J",
+      "anfitrionId": "24c1"
+    }
+  ],
+  "regalos": [
+    {
+      "id": "e85a",
+      "nombre": "pepe",
+      "descripcion": "ksjajakdsjakdjaslñ",
+      "eventoId": "8d2e"
+    },
+    {
+      "id": "05c2",
+      "nombre": "jairo",
+      "descripcion": "dsfsdfsdfs",
+      "eventoId": "3fdc"
+    }
+  ],
+  "invitados": []
+}
