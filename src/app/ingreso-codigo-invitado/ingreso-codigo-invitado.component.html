@@ -1,41 +1,25 @@
 <h2>Ingresar como Invitado</h2>
 
 <form (ngSubmit)="ingresarComoInvitado()">
-  <label for="codigo">Código del Evento:</label>
-  <input
-    type="text"
-    id="codigo"
-    [(ngModel)]="codigoEvento"
-    name="codigoEvento"
-    required
-  /><br />
+  <div class="input-container">
+    <label for="codigo">Código del Evento:</label>
+    <input type="text" id="codigo" [(ngModel)]="codigoEvento" name="codigoEvento" required />
+  </div>
 
-  <label for="nombre">Nombre:</label>
-  <input
-    type="text"
-    id="nombre"
-    [(ngModel)]="nombreInvitado"
-    name="nombreInvitado"
-    required
-  /><br />
+  <div class="input-container">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" [(ngModel)]="nombreInvitado" name="nombreInvitado" required />
+  </div>
 
-  <label for="apellido">Apellido:</label>
-  <input
-    type="text"
-    id="apellido"
-    [(ngModel)]="apellidoInvitado"
-    name="apellidoInvitado"
-    required
-  /><br />
+  <div class="input-container">
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" [(ngModel)]="apellidoInvitado" name="apellidoInvitado" required />
+  </div>
 
-  <label for="dni">DNI:</label>
-  <input
-    type="text"
-    id="dni"
-    [(ngModel)]="dniInvitado"
-    name="dniInvitado"
-    required
-  /><br />
+  <div class="input-container">
+    <label for="dni">DNI:</label>
+    <input type="text" id="dni" [(ngModel)]="dniInvitado" name="dniInvitado" required />
+  </div>
 
   <button type="submit">Ingresar</button>
 </form>

@@ -1,13 +1,11 @@
-<form (ngSubmit)="iniciarSesion()" class="flex flex-col items-center w-1/4 gap-4 p-4 mx-auto mt-12 border border-gray-400 rounded-md">
-  <div class="flex flex-col w-full gap-2">
+<form (ngSubmit)="iniciarSesion()">
+  <div class="input-container">
     <label for="email">Email:</label>
     <input type="email" id="email" [(ngModel)]="email" name="email" required />
   </div>
-
-  <div class="flex flex-col w-full gap-2">
+  <div class="input-container">
     <label class="" for="password">Password:</label>
     <input type="password" id="password" [(ngModel)]="password" name="password" required />
   </div>
-
   <button type="submit">Iniciar Sesión</button>
 </form>

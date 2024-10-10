@@ -5,6 +5,12 @@
       "nombre": "jairo antonio",
       "email": "jairo_s_22@hotmail.com",
       "password": "1234"
+    },
+    {
+      "id": "edee",
+      "nombre": "Nazareno",
+      "email": "nazarenooviedo@gmail.com",
+      "password": "123456"
     }
   ],
   "eventos": [
@@ -27,6 +33,16 @@
       "descripcion": "",
       "codigo": "ZB2R947J",
       "anfitrionId": "24c1"
+    },
+    {
+      "id": "713c",
+      "tipoEvento": "Cumpleaños",
+      "lugar": "Mar del Plata",
+      "fecha": "2024-10-25",
+      "hora": "19:30",
+      "descripcion": "Test",
+      "codigo": "S1E75TT6",
+      "anfitrionId": "edee"
     }
   ],
   "regalos": [
@@ -42,6 +58,13 @@
       "nombre": "jairo",
       "descripcion": "dsfsdfsdfs",
       "eventoId": "3fdc",
+      "seleccionado": true
+    },
+    {
+      "id": "b104",
+      "nombre": "Cocina",
+      "descripcion": "adsnidasni",
+      "eventoId": "713c",
       "seleccionado": true
     }
   ],
