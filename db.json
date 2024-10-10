@@ -34,13 +34,15 @@
       "id": "e85a",
       "nombre": "pepe",
       "descripcion": "ksjajakdsjakdjaslñ",
-      "eventoId": "8d2e"
+      "eventoId": "8d2e",
+      "seleccionado": true
     },
     {
       "id": "05c2",
       "nombre": "jairo",
       "descripcion": "dsfsdfsdfs",
-      "eventoId": "3fdc"
+      "eventoId": "3fdc",
+      "seleccionado": true
     }
   ],
   "invitados": []

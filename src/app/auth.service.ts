@@ -1,18 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000'; // Base URL del JSON Server
+  private apiUrl = 'http://localhost:3000/anfitriones'; // URL donde está la lista de anfitriones
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  // Iniciar sesión almacenando el anfitrionId
-  iniciarSesion(anfitrionId: string): void {
+  // Iniciar sesión obteniendo el anfitrion desde el backend
+  iniciarSesion(email: string, password: string): Observable<string | null> {
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      map((anfitriones) => {
+        const usuario = anfitriones.find(
+          (anfitrion) => anfitrion.email === email && anfitrion.password === password
+        );
+        return usuario ? usuario.id : null;
+      }),
+      catchError(() => of(null)) // En caso de error, devolvemos null
+    );
+  }
+
+  // Almacenar el anfitrionId
+  guardarSesion(anfitrionId: string): void {
     localStorage.setItem('anfitrionId', anfitrionId);
   }
 
@@ -34,6 +48,6 @@ export class AuthService {
 
   // Registrar un anfitrión
   registrarAnfitrion(anfitrion: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/anfitriones`, anfitrion);
+    return this.http.post<any>(`${this.apiUrl}`, anfitrion);
   }
 }

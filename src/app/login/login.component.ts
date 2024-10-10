@@ -14,15 +14,13 @@ export class LoginComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
   iniciarSesion() {
-    // Simulamos la verificación de usuario en el backend
-    if (this.email === 'jairo_s_22@hotmail.com' && this.password === '1234') {
-      this.authService.iniciarSesion('351c'); // ID de Jairo Antonio
-      this.router.navigate(['/menu-anfitrion']);
-    } else if (this.email === 'yamila@gmail.com' && this.password === '1234') {
-      this.authService.iniciarSesion('24c1'); // ID de Yamila
-      this.router.navigate(['/menu-anfitrion']);
-    } else {
-      alert('Credenciales incorrectas');
-    }
+    this.authService.iniciarSesion(this.email, this.password).subscribe((userId) => {
+      if (userId) {
+        this.authService.guardarSesion(userId);
+        this.router.navigate(['/menu-anfitrion']);
+      } else {
+        alert('Credenciales incorrectas');
+      }
+    });
   }
 }
