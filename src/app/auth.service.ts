@@ -8,46 +8,40 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/anfitriones'; // URL donde está la lista de anfitriones
+  private apiUrl = 'http://localhost:3000/users'; 
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  // Iniciar sesión obteniendo el anfitrion desde el backend
   iniciarSesion(email: string, password: string): Observable<string | null> {
     return this.http.get<any[]>(this.apiUrl).pipe(
-      map((anfitriones) => {
-        const usuario = anfitriones.find(
-          (anfitrion) => anfitrion.email === email && anfitrion.password === password
+      map((usuarios) => {
+        const usuario = usuarios.find(
+          (u) => u.email === email && u.password === password
         );
         return usuario ? usuario.id : null;
       }),
-      catchError(() => of(null)) // En caso de error, devolvemos null
+      catchError(() => of(null))
     );
   }
 
-  // Almacenar el anfitrionId
-  guardarSesion(anfitrionId: string): void {
-    localStorage.setItem('anfitrionId', anfitrionId);
+  guardarSesion(userId: string): void {
+    localStorage.setItem('userId', userId);
   }
 
-  // Cerrar sesión
   cerrarSesion(): void {
-    localStorage.removeItem('anfitrionId');
+    localStorage.removeItem('userId');
     this.router.navigate(['/login']);
   }
 
-  // Obtener el ID del anfitrión actual
-  obtenerAnfitrionId(): string | null {
-    return localStorage.getItem('anfitrionId');
+  obtenerUserId(): string | null {
+    return localStorage.getItem('userId');
   }
 
-  // Verificar si el usuario está autenticado
   isAuthenticated(): boolean {
-    return localStorage.getItem('anfitrionId') !== null;
+    return localStorage.getItem('userId') !== null;
   }
 
-  // Registrar un anfitrión
-  registrarAnfitrion(anfitrion: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, anfitrion);
+  registrarUsuario(usuario: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, usuario);
   }
 }

@@ -1,0 +1,18 @@
+<div *ngIf="evento">
+  <h2>{{ evento.tipoEvento }}</h2>
+  <p><strong>Lugar:</strong> {{ evento.lugar }}</p>
+  <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+  <p><strong>Hora:</strong> {{ evento.hora }}</p>
+  <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+</div>
+
+<h3>Lista de Regalos</h3>
+<ul>
+  <li *ngFor="let regalo of regalos">
+    <p><strong>Nombre:</strong> {{ regalo.name }}</p>
+    <p><strong>Descripción:</strong> {{ regalo.description }}</p>
+    <button [disabled]="regalo.isSelected" (click)="seleccionarRegalo(regalo)">
+      {{ regalo.isSelected ? "Seleccionado" : "Elegir Regalo" }}
+    </button>
+  </li>
+</ul>

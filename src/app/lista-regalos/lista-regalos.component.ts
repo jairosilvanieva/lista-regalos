@@ -9,9 +9,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./lista-regalos.component.css'],
 })
 export class ListaRegalosComponent implements OnInit {
-  regalos: any[] = [];  // Lista de regalos para el evento
-  eventoId: string = '';  // ID del evento actual
-  nuevoRegalo: { nombre: string; descripcion: string } = { nombre: '', descripcion: '' };  // Nuevo regalo a agregar
+  regalos: any[] = [];
+  eventoId: string = '';
+  nuevoRegalo: { nombre: string; descripcion: string } = { nombre: '', descripcion: '' };
   private routeSub: Subscription = new Subscription();
 
   constructor(
@@ -20,7 +20,6 @@ export class ListaRegalosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Obtener el eventoId desde la URL o de alguna fuente apropiada
     this.routeSub = this.route.params.subscribe((params) => {
       this.eventoId = params['eventoId'];
       this.cargarRegalos();
@@ -38,15 +37,17 @@ export class ListaRegalosComponent implements OnInit {
   agregarRegalo(): void {
     if (this.nuevoRegalo.nombre && this.nuevoRegalo.descripcion) {
       const regalo = {
-        nombre: this.nuevoRegalo.nombre,
-        descripcion: this.nuevoRegalo.descripcion,
-        eventoId: this.eventoId
+        id: this.generarIdUnico(),
+        name: this.nuevoRegalo.nombre,
+        description: this.nuevoRegalo.descripcion,
+        isSelected: false,
+        eventId: this.eventoId
       };
 
       this.regalosService.addRegalo(regalo).subscribe(() => {
         alert('Regalo agregado con éxito');
-        this.cargarRegalos();  // Recargar la lista de regalos después de agregar uno nuevo
-        this.nuevoRegalo = { nombre: '', descripcion: '' };  // Limpiar los campos del nuevo regalo
+        this.cargarRegalos();
+        this.nuevoRegalo = { nombre: '', descripcion: '' };
       }, (error: any) => {
         console.error('Error al agregar regalo:', error);
       });
@@ -55,8 +56,11 @@ export class ListaRegalosComponent implements OnInit {
     }
   }
 
+  generarIdUnico(): string {
+    return Math.random().toString(36).substr(2, 9);
+  }
+
   ngOnDestroy(): void {
-    // Desuscribirse al finalizar el componente para evitar memory leaks
     if (this.routeSub) {
       this.routeSub.unsubscribe();
     }

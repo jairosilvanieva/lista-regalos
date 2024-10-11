@@ -2,7 +2,12 @@
 <form (ngSubmit)="crearEvento()">
   <div class="input-container">
     <label for="tipoEvento">Tipo de Evento:</label>
-    <input type="text" id="tipoEvento" [(ngModel)]="tipoEvento" name="tipoEvento" />
+    <input
+      type="text"
+      id="tipoEvento"
+      [(ngModel)]="tipoEvento"
+      name="tipoEvento"
+    />
   </div>
   <div class="input-container">
     <label for="lugar">Lugar:</label>
@@ -18,7 +23,11 @@
   </div>
   <div class="input-container">
     <label for="descripcion">Descripción:</label>
-    <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion"></textarea>
+    <textarea
+      id="descripcion"
+      [(ngModel)]="descripcion"
+      name="descripcion"
+    ></textarea>
   </div>
   <button type="submit">Crear Evento</button>
 </form>

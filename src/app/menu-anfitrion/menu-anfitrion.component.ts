@@ -3,18 +3,30 @@ import { Router } from '@angular/router';
 import { EventosService } from '../eventos.service';
 import { AuthService } from '../auth.service';
 
+interface Event {
+  id: string;
+  tipoEvento: string;
+  lugar: string;
+  fecha: string;
+  hora: string;
+  descripcion: string;
+  codigo: string;
+  userId: string;
+}
+
 @Component({
   selector: 'app-menu-anfitrion',
   templateUrl: './menu-anfitrion.component.html',
   styleUrls: ['./menu-anfitrion.component.css']
 })
 export class MenuAnfitrionComponent implements OnInit {
+  eventos: Event[] = [];
+
   tipoEvento: string = '';
   lugar: string = '';
   fecha: string = '';
   hora: string = '';
   descripcion: string = '';
-  eventos: any[] = [];  // Lista de eventos creados por el anfitrión
 
   constructor(
     private router: Router,
@@ -26,12 +38,11 @@ export class MenuAnfitrionComponent implements OnInit {
     this.cargarEventos();
   }
 
-  // Cargar eventos existentes
   cargarEventos() {
-    const anfitrionId = this.authService.obtenerAnfitrionId();  // Obtener el ID del anfitrión desde el servicio de autenticación
+    const anfitrionId = this.authService.obtenerUserId();
     if (anfitrionId) {
       this.eventosService.getEventosPorAnfitrion(anfitrionId).subscribe({
-        next: (eventos: any[]) => {
+        next: (eventos: Event[]) => {
           this.eventos = eventos;
         },
         error: (error: any) => {
@@ -41,25 +52,24 @@ export class MenuAnfitrionComponent implements OnInit {
     }
   }
 
-  // Crear un nuevo evento
   crearEvento() {
-    const anfitrionId = this.authService.obtenerAnfitrionId();  // Obtener el ID del anfitrión desde el servicio de autenticación
+    const anfitrionId = this.authService.obtenerUserId();
     if (anfitrionId) {
-      const nuevoEvento = {
+      const nuevoEvento: Event = {
+        id: this.generarIdUnico(),
         tipoEvento: this.tipoEvento,
         lugar: this.lugar,
         fecha: this.fecha,
         hora: this.hora,
         descripcion: this.descripcion,
-        codigo: this.generarCodigoUnico(),  // Generar un código único
-        anfitrionId: anfitrionId  // Asociar el evento al anfitrión logueado
+        codigo: this.generarCodigoUnico(),
+        userId: anfitrionId
       };
 
       this.eventosService.crearEvento(nuevoEvento).subscribe({
         next: () => {
-          console.log('Evento creado con éxito');
           alert('Evento creado con éxito');
-          this.cargarEventos();  // Recargar la lista de eventos
+          this.cargarEventos();
         },
         error: (error: any) => {
           console.error('Error al crear el evento:', error);
@@ -69,12 +79,14 @@ export class MenuAnfitrionComponent implements OnInit {
     }
   }
 
-  // Generar un código único para el evento
+  generarIdUnico(): string {
+    return Math.random().toString(36).substr(2, 9);
+  }
+
   generarCodigoUnico(): string {
     let codigoUnico = '';
     let existeCodigo = true;
 
-    // Generar un nuevo código hasta que sea único
     while (existeCodigo) {
       codigoUnico = Math.random().toString(36).substr(2, 8).toUpperCase();
       existeCodigo = this.eventos.some(evento => evento.codigo === codigoUnico);
@@ -83,12 +95,10 @@ export class MenuAnfitrionComponent implements OnInit {
     return codigoUnico;
   }
 
-  // Redirigir a la página para elegir regalos
   elegirRegalos(eventoId: string) {
-    this.router.navigate(['/eventos', eventoId, 'regalos']);  // Pasar el ID del evento para gestionar sus regalos
+    this.router.navigate(['/eventos', eventoId, 'regalos']);
   }
 
-  // Cerrar sesión
   cerrarSesion() {
     this.authService.cerrarSesion();
   }

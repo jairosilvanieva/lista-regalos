@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RegalosService } from '../regalos.service'; // Asegúrate de tener un servicio que maneje los regalos
+import { RegalosService } from '../regalos.service';
 
 @Component({
   selector: 'app-regalos-invitado',
@@ -16,7 +16,7 @@ export class RegalosInvitadoComponent implements OnInit {
   }
 
   obtenerRegalos(): void {
-    this.regalosService.getRegalos().subscribe((regalos) => {
+    this.regalosService.getRegalos().subscribe((regalos: any[]) => {
       this.listaRegalos = regalos;
     });
   }

@@ -7,6 +7,8 @@ import { IngresoCodigoInvitadoComponent } from './ingreso-codigo-invitado/ingres
 import { RegalosInvitadoComponent } from './regalos-invitado/regalos-invitado.component';
 import { MenuAnfitrionComponent } from './menu-anfitrion/menu-anfitrion.component';
 import { EventosComponent } from './eventos/eventos.component';
+import { MenuInvitadoComponent } from './menu-invitado/menu-invitado.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,9 +17,11 @@ const routes: Routes = [
   { path: 'eventos', component: EventosComponent },
   { path: 'eventos/:eventoId/regalos', component: ListaRegalosComponent },
   { path: 'ingreso-codigo-invitado', component: IngresoCodigoInvitadoComponent },
-  { path: 'regalos-invitado', component: RegalosInvitadoComponent },
+  { path: 'menu-invitado', component: MenuInvitadoComponent },
+
   { path: 'menu-anfitrion', component: MenuAnfitrionComponent },
-  { path: '**', redirectTo: '/login' }  // Redirigir al login si la ruta no existe
+ 
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

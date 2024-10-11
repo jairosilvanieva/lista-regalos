@@ -1,72 +1,78 @@
 {
-  "anfitriones": [
+  "users": [
     {
-      "id": "2a15",
-      "nombre": "jairo antonio",
+      "id": "1",
+      "name": "jairo antonio",
       "email": "jairo_s_22@hotmail.com",
-      "password": "1234"
+      "password": "1234",
+      "events": []
     },
     {
-      "id": "edee",
-      "nombre": "Nazareno",
-      "email": "nazarenooviedo@gmail.com",
-      "password": "123456"
+      "id": "2",
+      "name": "jairo",
+      "email": "j@s",
+      "password": "1234",
+      "events": []
     }
   ],
-  "eventos": [
+  "events": [
     {
-      "id": "8d2e",
+      "id": "1",
       "tipoEvento": "cumpleaños",
       "lugar": "mii casa",
-      "fecha": "2024-10-09",
-      "hora": "21:02",
+      "fecha": "2024-10-11",
+      "hora": "18:26",
       "descripcion": "",
-      "codigo": "AQO2GZFD",
-      "anfitrionId": "351c"
-    },
-    {
-      "id": "3fdc",
-      "tipoEvento": "bautismo",
-      "lugar": "la igle",
-      "fecha": "2024-10-10",
-      "hora": "18:05",
-      "descripcion": "",
-      "codigo": "ZB2R947J",
-      "anfitrionId": "24c1"
-    },
-    {
-      "id": "713c",
-      "tipoEvento": "Cumpleaños",
-      "lugar": "Mar del Plata",
-      "fecha": "2024-10-25",
-      "hora": "19:30",
-      "descripcion": "Test",
-      "codigo": "S1E75TT6",
-      "anfitrionId": "edee"
+      "codigo": "OQRSQPQ4",
+      "userId": "1"
     }
   ],
-  "regalos": [
+  "gifts": [
     {
-      "id": "e85a",
+      "id": "1",
+      "name": "pelota",
+      "description": "pelota",
+      "isSelected": false,
+      "eventId": "1",
+      "seleccionado": true
+    },
+    {
+      "id": "zzwtg2wu3",
+      "name": "pepe",
+      "description": "dsfsdfsdfs",
+      "isSelected": false,
+      "eventId": "1",
+      "seleccionado": true
+    }
+  ],
+  "guests": [
+    {
+      "id": "f193",
+      "nombre": "rulo",
+      "apellido": "rulito",
+      "dni": "1234",
+      "codigoEvento": "OQRSQPQ4"
+    },
+    {
+      "id": "9ea3",
+      "nombre": "rulo",
+      "apellido": "rulito",
+      "dni": "1234",
+      "eventId": "1"
+    },
+    {
+      "id": "1dea",
       "nombre": "pepe",
-      "descripcion": "ksjajakdsjakdjaslñ",
-      "eventoId": "8d2e",
-      "seleccionado": true
+      "apellido": "argento",
+      "dni": "12345",
+      "eventId": "1"
     },
     {
-      "id": "05c2",
-      "nombre": "jairo",
-      "descripcion": "dsfsdfsdfs",
-      "eventoId": "3fdc",
-      "seleccionado": true
-    },
-    {
-      "id": "b104",
-      "nombre": "Cocina",
-      "descripcion": "adsnidasni",
-      "eventoId": "713c",
-      "seleccionado": true
+      "id": "f025",
+      "nombre": "pepe",
+      "apellido": "ape",
+      "dni": "36071890",
+      "eventId": "1"
     }
-  ],
-  "invitados": []
+  ]
 }
