@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { User } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -12,12 +13,13 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  // Iniciar sesión obteniendo el anfitrion desde el backend
+  // Iniciar sesión obteniendo el anfitrión desde el backend
   iniciarSesion(email: string, password: string): Observable<string | null> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
+    return this.http.get<User[]>(this.apiUrl).pipe(
       map((anfitriones) => {
         const usuario = anfitriones.find(
-          (anfitrion) => anfitrion.email === email && anfitrion.password === password
+          (anfitrion) =>
+            anfitrion.email === email && anfitrion.password === password
         );
         return usuario ? usuario.id : null;
       }),
@@ -25,7 +27,7 @@ export class AuthService {
     );
   }
 
-  // Almacenar el anfitrionId
+  // Almacenar el anfitriónId
   guardarSesion(anfitrionId: string): void {
     localStorage.setItem('anfitrionId', anfitrionId);
   }
@@ -47,7 +49,18 @@ export class AuthService {
   }
 
   // Registrar un anfitrión
-  registrarAnfitrion(anfitrion: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, anfitrion);
+  registrarAnfitrion(anfitrion: User): Observable<User | null> {
+    return this.http.get<User[]>(this.apiUrl).pipe(
+      switchMap((anfitriones) => {
+        const usuarioExistente = anfitriones.find(
+          (user) => user.email === anfitrion.email
+        );
+        if (usuarioExistente) {
+          return of(null); // Email ya está en uso, devolvemos null
+        }
+        return this.http.post<User>(`${this.apiUrl}`, anfitrion); // Si no existe, lo registramos
+      }),
+      catchError(() => of(null)) // En caso de error, devolvemos null
+    );
   }
 }
