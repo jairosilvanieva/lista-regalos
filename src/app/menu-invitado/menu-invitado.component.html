@@ -1,0 +1,13 @@
+<!-- menu-invitado.component.html -->
+<h2>Bienvenido, {{ nombreInvitado }} {{ apellidoInvitado }}</h2>
+<p *ngIf="eventoId">Evento actual: {{ eventoId }}</p>
+<p *ngIf="!eventoId">No se encontró un evento válido.</p>
+
+<div class="menu-opciones">
+  <button (click)="verEvento()">Ver Evento</button>
+  <button (click)="verRegalos()">Ver Regalos</button>
+</div>
+
+<div class="cerrar-sesion">
+  <button (click)="cerrarSesion()">Cerrar Sesión</button>
+</div>

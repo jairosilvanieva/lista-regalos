@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,30 +14,61 @@ export class RegalosService {
   // Obtener los regalos filtrados por eventoId
   getRegalosPorEvento(eventoId: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/regalos?eventoId=${eventoId}`);
-  }
+}
+
 
   // Obtener todos los regalos
   getRegalos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/regalos`);
+    return this.http.get<any[]>(`${this.apiUrl}/regalos`)
+      .pipe(
+        catchError(error => {
+          console.error('Error al obtener todos los regalos:', error);
+          return throwError(error);
+        })
+      );
   }
 
   // Agregar un regalo
   addRegalo(regalo: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/regalos`, regalo);
+    return this.http.post<any>(`${this.apiUrl}/regalos`, regalo)
+      .pipe(
+        catchError(error => {
+          console.error('Error al agregar un regalo:', error);
+          return throwError(error);
+        })
+      );
   }
 
   // Actualizar un regalo
   actualizarRegalo(regalo: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/regalos/${regalo.id}`, regalo);
+    return this.http.put(`${this.apiUrl}/regalos/${regalo.id}`, regalo)
+      .pipe(
+        catchError(error => {
+          console.error('Error al actualizar el regalo:', error);
+          return throwError(error);
+        })
+      );
   }
 
   // Verificar el código del evento
   verificarCodigoEvento(codigo: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/eventos?codigo=${codigo}`);
+    return this.http.get<any[]>(`${this.apiUrl}/eventos?codigo=${codigo}`)
+      .pipe(
+        catchError(error => {
+          console.error('Error al verificar el código del evento:', error);
+          return throwError(error);
+        })
+      );
   }
 
   // Registrar un invitado
   registrarInvitado(invitado: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/invitados`, invitado);
+    return this.http.post<any>(`${this.apiUrl}/invitados`, invitado)
+      .pipe(
+        catchError(error => {
+          console.error('Error al registrar el invitado:', error);
+          return throwError(error);
+        })
+      );
   }
 }

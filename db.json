@@ -1,47 +1,80 @@
 {
   "anfitriones": [
     {
-      "id": "2a15",
+      "id": "f406",
       "nombre": "jairo antonio",
       "email": "jairo_s_22@hotmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "ef8e",
+      "nombre": "yamila",
+      "email": "j@s",
       "password": "1234"
     }
   ],
   "eventos": [
     {
-      "id": "8d2e",
+      "id": "6196",
       "tipoEvento": "cumpleaños",
       "lugar": "mii casa",
-      "fecha": "2024-10-09",
-      "hora": "21:02",
+      "fecha": "2024-10-11",
+      "hora": "08:50",
       "descripcion": "",
-      "codigo": "AQO2GZFD",
-      "anfitrionId": "351c"
-    },
-    {
-      "id": "3fdc",
-      "tipoEvento": "bautismo",
-      "lugar": "la igle",
-      "fecha": "2024-10-10",
-      "hora": "18:05",
-      "descripcion": "",
-      "codigo": "ZB2R947J",
-      "anfitrionId": "24c1"
+      "codigo": "XYM4NC9W",
+      "anfitrionId": "f406"
     }
   ],
   "regalos": [
     {
-      "id": "e85a",
+      "id": "e423",
       "nombre": "pepe",
-      "descripcion": "ksjajakdsjakdjaslñ",
-      "eventoId": "8d2e"
-    },
-    {
-      "id": "05c2",
-      "nombre": "jairo",
       "descripcion": "dsfsdfsdfs",
-      "eventoId": "3fdc"
+      "eventoId": "6196"
     }
   ],
-  "invitados": []
+  "invitados": [
+    {
+      "id": "b10b",
+      "nombre": "rulo",
+      "apellido": "rulito",
+      "dni": "1234",
+      "codigoEvento": "XYM4NC9W"
+    },
+    {
+      "id": "3e48",
+      "nombre": "rulo",
+      "apellido": "ape",
+      "dni": "1234",
+      "codigoEvento": "XYM4NC9W"
+    },
+    {
+      "id": "0832",
+      "nombre": "ulo",
+      "apellido": "ape",
+      "dni": "36071890",
+      "codigoEvento": "XYM4NC9W"
+    },
+    {
+      "id": "bb15",
+      "nombre": "rulo",
+      "apellido": "rulito",
+      "dni": "1234",
+      "codigoEvento": "XYM4NC9W"
+    },
+    {
+      "id": "53f1",
+      "nombre": "rulo",
+      "apellido": "rulito",
+      "dni": "1234",
+      "codigoEvento": "XYM4NC9W"
+    },
+    {
+      "id": "14bd",
+      "nombre": "rulo",
+      "apellido": "rulito",
+      "dni": "1234",
+      "codigoEvento": "XYM4NC9W"
+    }
+  ]
 }

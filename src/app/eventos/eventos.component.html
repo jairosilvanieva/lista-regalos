@@ -1,1 +1,25 @@
-<p>eventos works!</p>
+<div>
+  <h2>Lista de Eventos</h2>
+  <ul>
+    <li *ngFor="let evento of eventos">
+      {{ evento.tipoEvento }} - {{ evento.fecha }}
+      <button (click)="eventoId = evento.id; cargarEvento()">
+        Ver Detalles
+      </button>
+    </li>
+  </ul>
+</div>
+
+<!-- Detalles del evento -->
+<div *ngIf="evento; else noEvento">
+  <h2>Detalles del Evento</h2>
+  <p><strong>Tipo de evento:</strong> {{ evento.tipoEvento }}</p>
+  <p><strong>Lugar:</strong> {{ evento.lugar }}</p>
+  <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+  <p><strong>Hora:</strong> {{ evento.hora }}</p>
+  <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+</div>
+
+<ng-template #noEvento>
+  <p>No se encontró la información del evento.</p>
+</ng-template>

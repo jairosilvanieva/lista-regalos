@@ -1,3 +1,4 @@
+// menu-anfitrion.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventosService } from '../eventos.service';
@@ -23,7 +24,16 @@ export class MenuAnfitrionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.verificarAutenticacion();
     this.cargarEventos();
+  }
+
+  // Verificar si el usuario está autenticado
+  verificarAutenticacion() {
+    if (!this.authService.isAuthenticated()) {
+      // Si no está autenticado, redirigir al login
+      this.router.navigate(['/login']);
+    }
   }
 
   // Cargar eventos existentes
@@ -57,7 +67,6 @@ export class MenuAnfitrionComponent implements OnInit {
 
       this.eventosService.crearEvento(nuevoEvento).subscribe({
         next: () => {
-          console.log('Evento creado con éxito');
           alert('Evento creado con éxito');
           this.cargarEventos();  // Recargar la lista de eventos
         },
@@ -85,8 +94,12 @@ export class MenuAnfitrionComponent implements OnInit {
 
   // Redirigir a la página para elegir regalos
   elegirRegalos(eventoId: string) {
-    this.router.navigate(['/eventos', eventoId, 'regalos']);  // Pasar el ID del evento para gestionar sus regalos
-  }
+    if (eventoId) {
+      this.router.navigate(['/evento', eventoId, 'regalos']);  // Navega al componente de regalos asociado al evento
+    } else {
+      console.error('El eventoId es inválido o no existe.');
+    }
+}
 
   // Cerrar sesión
   cerrarSesion() {
