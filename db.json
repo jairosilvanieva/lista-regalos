@@ -32,7 +32,7 @@
       "id": "1",
       "name": "pelota",
       "description": "pelota",
-      "isSelected": false,
+      "isSelected": true,
       "eventId": "1",
       "seleccionado": true
     },
@@ -40,9 +40,16 @@
       "id": "zzwtg2wu3",
       "name": "pepe",
       "description": "dsfsdfsdfs",
-      "isSelected": false,
+      "isSelected": true,
       "eventId": "1",
       "seleccionado": true
+    },
+    {
+      "id": "bwpgdiaxt",
+      "name": "bicicleta",
+      "description": "123",
+      "isSelected": true,
+      "eventId": "1"
     }
   ],
   "guests": [
@@ -72,6 +79,27 @@
       "nombre": "pepe",
       "apellido": "ape",
       "dni": "36071890",
+      "eventId": "1"
+    },
+    {
+      "id": "8e9a",
+      "nombre": "rulo",
+      "apellido": "rulito",
+      "dni": "1234",
+      "eventId": "1"
+    },
+    {
+      "id": "8053",
+      "nombre": "ulo",
+      "apellido": "rulito",
+      "dni": "1234",
+      "eventId": "1"
+    },
+    {
+      "id": "7635",
+      "nombre": "ulo",
+      "apellido": "ape",
+      "dni": "1234",
       "eventId": "1"
     }
   ]

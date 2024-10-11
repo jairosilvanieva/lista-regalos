@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RegalosService } from '../regalos.service';
+import { ActivatedRoute } from '@angular/router';
 import { EventosService } from '../eventos.service';
+import { RegalosService } from '../regalos.service';
 
 @Component({
   selector: 'app-menu-invitado',
@@ -8,39 +9,37 @@ import { EventosService } from '../eventos.service';
   styleUrls: ['./menu-invitado.component.css']
 })
 export class MenuInvitadoComponent implements OnInit {
-  evento: any = null;  // Datos del evento actual
-  regalos: any[] = []; // Lista de regalos del evento
-  codigoEvento: string = ''; // Código del evento, se obtiene del localStorage
+  evento: any = {};
+  regalos: any[] = [];
 
   constructor(
+    private eventosService: EventosService,
     private regalosService: RegalosService,
-    private eventosService: EventosService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.codigoEvento = localStorage.getItem('codigoEvento') || '';
-    if (this.codigoEvento) {
-      this.cargarEvento();
-      this.cargarRegalos();
+    const codigoEvento = localStorage.getItem('codigoEvento');
+    if (codigoEvento) {
+      this.cargarEvento(codigoEvento);
     }
   }
 
-  cargarEvento(): void {
-    this.eventosService.verificarCodigoEvento(this.codigoEvento).subscribe((eventos: any[]) => {
+  cargarEvento(codigo: string): void {
+    this.eventosService.verificarCodigoEvento(codigo).subscribe((eventos: any[]) => {
       if (eventos.length > 0) {
         this.evento = eventos[0];
+        this.cargarRegalos(this.evento.id); // Cargar regalos asociados al evento
       } else {
-        alert('No se encontró el evento');
+        alert('Evento no encontrado');
       }
     });
   }
 
-  cargarRegalos(): void {
-    if (this.evento && this.evento.id) {
-      this.regalosService.getRegalosPorEvento(this.evento.id).subscribe((data: any[]) => {
-        this.regalos = data;
-      });
-    }
+  cargarRegalos(eventoId: string): void {
+    this.regalosService.getRegalosPorEvento(eventoId).subscribe((regalos: any[]) => {
+      this.regalos = regalos;
+    });
   }
 
   seleccionarRegalo(regalo: any): void {
@@ -48,7 +47,6 @@ export class MenuInvitadoComponent implements OnInit {
       regalo.isSelected = true;
       this.regalosService.actualizarRegalo(regalo).subscribe(() => {
         alert('Regalo seleccionado con éxito');
-        this.cargarRegalos();  // Recargar la lista de regalos
       });
     } else {
       alert('Este regalo ya fue seleccionado.');

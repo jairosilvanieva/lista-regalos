@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegalosService } from '../regalos.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-regalos-invitado',
@@ -7,23 +8,33 @@ import { RegalosService } from '../regalos.service';
   styleUrls: ['./regalos-invitado.component.css']
 })
 export class RegalosInvitadoComponent implements OnInit {
-  listaRegalos: any[] = [];  // Aquí cargaremos los regalos
+  listaRegalos: any[] = [];
+  eventoId: string = '';
 
-  constructor(private regalosService: RegalosService) { }
+  constructor(
+    private regalosService: RegalosService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.obtenerRegalos();
-  }
-
-  obtenerRegalos(): void {
-    this.regalosService.getRegalos().subscribe((regalos: any[]) => {
-      this.listaRegalos = regalos;
+    // Obtener el eventoId desde la URL o de alguna fuente
+    this.route.params.subscribe((params) => {
+      this.eventoId = params['eventoId'];
+      this.obtenerRegalos();
     });
   }
 
+  obtenerRegalos(): void {
+    if (this.eventoId) {
+      this.regalosService.getRegalosPorEvento(this.eventoId).subscribe((regalos: any[]) => {
+        this.listaRegalos = regalos;
+      });
+    }
+  }
+
   seleccionarRegalo(regalo: any): void {
-    if (!regalo.seleccionado) {
-      regalo.seleccionado = true;
+    if (!regalo.isSelected) {
+      regalo.isSelected = true;
       this.regalosService.actualizarRegalo(regalo).subscribe(() => {
         alert('Regalo seleccionado con éxito');
       });
