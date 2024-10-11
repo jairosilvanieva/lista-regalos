@@ -1,15 +1,18 @@
-<!-- app.component.html -->
-<div class="menu-principal">
-  <h2>Bienvenido a la Lista de Regalos</h2>
+<header class="p-4 bg-blue-500">
   <nav>
-    <ul>
-      <li><a routerLink="/registro">Registro</a></li>
+    <ul class="flex items-center justify-end gap-4 font-medium text-white">
       <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/registro">Registro de Anfitrión</a></li>
       <li>
-        <a routerLink="/ingreso-codigo-invitado">Ingreso como Invitado</a>
+        <a routerLink="/ingreso-codigo-invitado">Ingresar como Invitado</a>
       </li>
     </ul>
   </nav>
-</div>
-<router-outlet></router-outlet>
-<!-- Necesario para que el enrutador renderice los componentes -->
+</header>
+
+<main class="flex flex-col items-center justify-center p-4">
+  <h1 class="text-4xl font-bold">
+    Bienvenido a la Plataforma de Lista de Regalos
+  </h1>
+  <router-outlet></router-outlet>
+</main>
