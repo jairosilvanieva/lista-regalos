@@ -5,7 +5,7 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   email: string = '';
@@ -13,10 +13,10 @@ export class LoginComponent {
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  iniciarSesion() {
-    this.authService.iniciarSesion(this.email, this.password).subscribe((userId) => {
+  login() {
+    this.authService.login(this.email, this.password).subscribe((userId) => {
       if (userId) {
-        this.authService.guardarSesion(userId);
+        this.authService.saveSession(userId);
         this.router.navigate(['/menu-anfitrion']);
       } else {
         alert('Credenciales incorrectas');

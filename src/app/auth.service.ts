@@ -8,40 +8,46 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/users'; 
+  private apiUrl = 'http://localhost:3000/users'; // URL where the users list is
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  iniciarSesion(email: string, password: string): Observable<string | null> {
+  // Login by fetching the user from the backend
+  login(email: string, password: string): Observable<string | null> {
     return this.http.get<any[]>(this.apiUrl).pipe(
-      map((usuarios) => {
-        const usuario = usuarios.find(
+      map((users) => {
+        const user = users.find(
           (u) => u.email === email && u.password === password
         );
-        return usuario ? usuario.id : null;
+        return user ? user.id : null;
       }),
-      catchError(() => of(null))
+      catchError(() => of(null)) // In case of error, return null
     );
   }
 
-  guardarSesion(userId: string): void {
+  // Store the userId
+  saveSession(userId: string): void {
     localStorage.setItem('userId', userId);
   }
 
-  cerrarSesion(): void {
+  // Logout
+  logout(): void {
     localStorage.removeItem('userId');
     this.router.navigate(['/login']);
   }
 
-  obtenerUserId(): string | null {
+  // Get the current user ID
+  getUserId(): string | null {
     return localStorage.getItem('userId');
   }
 
+  // Check if the user is authenticated
   isAuthenticated(): boolean {
     return localStorage.getItem('userId') !== null;
   }
 
-  registrarUsuario(usuario: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, usuario);
+  // Register a new user
+  registerUser(user: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, user);
   }
 }

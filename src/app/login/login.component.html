@@ -1,11 +1,17 @@
-<form (ngSubmit)="iniciarSesion()">
+<form (ngSubmit)="login()">
   <div class="input-container">
     <label for="email">Email:</label>
     <input type="email" id="email" [(ngModel)]="email" name="email" required />
   </div>
   <div class="input-container">
     <label class="" for="password">Password:</label>
-    <input type="password" id="password" [(ngModel)]="password" name="password" required />
+    <input
+      type="password"
+      id="password"
+      [(ngModel)]="password"
+      name="password"
+      required
+    />
   </div>
   <button type="submit">Iniciar Sesión</button>
 </form>

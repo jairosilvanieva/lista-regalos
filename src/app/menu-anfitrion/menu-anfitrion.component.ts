@@ -17,7 +17,7 @@ interface Event {
 @Component({
   selector: 'app-menu-anfitrion',
   templateUrl: './menu-anfitrion.component.html',
-  styleUrls: ['./menu-anfitrion.component.css']
+  styleUrls: ['./menu-anfitrion.component.css'],
 })
 export class MenuAnfitrionComponent implements OnInit {
   eventos: Event[] = [];
@@ -39,7 +39,7 @@ export class MenuAnfitrionComponent implements OnInit {
   }
 
   cargarEventos() {
-    const anfitrionId = this.authService.obtenerUserId();
+    const anfitrionId = this.authService.getUserId();
     if (anfitrionId) {
       this.eventosService.getEventosPorAnfitrion(anfitrionId).subscribe({
         next: (eventos: Event[]) => {
@@ -47,13 +47,13 @@ export class MenuAnfitrionComponent implements OnInit {
         },
         error: (error: any) => {
           console.error('Error al cargar eventos:', error);
-        }
+        },
       });
     }
   }
 
   crearEvento() {
-    const anfitrionId = this.authService.obtenerUserId();
+    const anfitrionId = this.authService.getUserId();
     if (anfitrionId) {
       const nuevoEvento: Event = {
         id: this.generarIdUnico(),
@@ -63,7 +63,7 @@ export class MenuAnfitrionComponent implements OnInit {
         hora: this.hora,
         descripcion: this.descripcion,
         codigo: this.generarCodigoUnico(),
-        userId: anfitrionId
+        userId: anfitrionId,
       };
 
       this.eventosService.crearEvento(nuevoEvento).subscribe({
@@ -74,7 +74,7 @@ export class MenuAnfitrionComponent implements OnInit {
         error: (error: any) => {
           console.error('Error al crear el evento:', error);
           alert('Error al crear el evento');
-        }
+        },
       });
     }
   }
@@ -89,7 +89,9 @@ export class MenuAnfitrionComponent implements OnInit {
 
     while (existeCodigo) {
       codigoUnico = Math.random().toString(36).substr(2, 8).toUpperCase();
-      existeCodigo = this.eventos.some(evento => evento.codigo === codigoUnico);
+      existeCodigo = this.eventos.some(
+        (evento) => evento.codigo === codigoUnico
+      );
     }
 
     return codigoUnico;
@@ -100,6 +102,6 @@ export class MenuAnfitrionComponent implements OnInit {
   }
 
   cerrarSesion() {
-    this.authService.cerrarSesion();
+    this.authService.logout();
   }
 }
