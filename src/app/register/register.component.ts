@@ -11,38 +11,37 @@ interface User {
 }
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
 })
-export class RegistroComponent {
-  nombre: string = '';
+export class RegisterComponent {
+  name: string = '';
   email: string = '';
   password: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  registrar(): void {
-    const nuevoUsuario: User = {
-      id: this.generarIdUnico(), 
-      name: this.nombre,
+  register(): void {
+    const newUser: User = {
+      id: this.generateUniqueId(),
+      name: this.name,
       email: this.email,
       password: this.password,
-      events: []
+      events: [],
     };
 
-    this.authService.registrarUsuario(nuevoUsuario).subscribe({
+    this.authService.registerUser(newUser).subscribe({
       next: () => {
-        alert('Registro exitoso');
-        this.router.navigate(['/login']); 
+        this.router.navigate(['/login']);
       },
       error: (error: any) => {
-        console.error('Error al registrar el usuario:', error);
+        console.error('Error registering the user:', error);
       },
     });
   }
 
-  generarIdUnico(): string {
+  generateUniqueId(): string {
     return Math.random().toString(36).substr(2, 9);
   }
 }

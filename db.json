@@ -13,18 +13,55 @@
       "email": "j@s",
       "password": "1234",
       "events": []
+    },
+    {
+      "id": "br7051y0r",
+      "name": "Nazareno Oviedo",
+      "email": "nazarenooviedo@gmail.com",
+      "password": "1234",
+      "events": []
     }
   ],
   "events": [
     {
       "id": "1",
-      "tipoEvento": "cumpleaños",
-      "lugar": "mii casa",
-      "fecha": "2024-10-11",
-      "hora": "18:26",
-      "descripcion": "",
-      "codigo": "OQRSQPQ4",
+      "eventType": "cumpleaños",
+      "location": "mii casa",
+      "date": "2024-10-11",
+      "time": "18:26",
+      "description": "",
+      "code": "OQRSQPQ4",
       "userId": "1"
+    },
+    {
+      "id": "2",
+      "eventType": "aaaa",
+      "location": "mii caadssa",
+      "date": "2024-10-11",
+      "time": "18:26",
+      "description": "",
+      "code": "PQRSQPQ5",
+      "userId": "1"
+    },
+    {
+      "id": "pdwsa8zq4",
+      "eventType": "Cumple",
+      "location": "Mar del Plata",
+      "date": "2024-10-19",
+      "time": "20:32",
+      "description": "AAAAAAA",
+      "code": "M62O2AA2",
+      "userId": "br7051y0r"
+    },
+    {
+      "id": "79mvuzxuy",
+      "eventType": "Cumple",
+      "location": "Mar del Plata",
+      "date": "2024-10-19",
+      "time": "20:32",
+      "description": "AAAAAAA",
+      "code": "QU88DKO7",
+      "userId": "br7051y0r"
     }
   ],
   "gifts": [

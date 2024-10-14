@@ -5,12 +5,12 @@ import { Observable } from 'rxjs';
 // Definir la interfaz Event localmente
 interface Event {
   id: string;
-  tipoEvento: string;
-  lugar: string;
-  fecha: string;
-  hora: string;
-  descripcion: string;
-  codigo: string;
+  eventType: string;
+  location: string;
+  date: string;
+  time: string;
+  description: string;
+  code: string;
   userId: string;
 }
 
@@ -33,8 +33,7 @@ export class EventosService {
   }
 
   // Verificar el código del evento
-verificarCodigoEvento(codigo: string): Observable<any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}?codigo=${codigo}`);
-}
-
+  verificarCodigoEvento(codigo: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}?codigo=${codigo}`);
+  }
 }

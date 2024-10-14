@@ -17,7 +17,7 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe((userId) => {
       if (userId) {
         this.authService.saveSession(userId);
-        this.router.navigate(['/menu-anfitrion']);
+        this.router.navigate(['/eventos']);
       } else {
         alert('Credenciales incorrectas');
       }
