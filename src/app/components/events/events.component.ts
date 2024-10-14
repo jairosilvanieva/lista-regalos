@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EventosService } from '../eventos.service';
-import { AuthService } from '../auth.service';
+import { EventsService } from '../../services/events.service';
+import { AuthService } from '../../services/auth.service';
 
 interface Event {
   id: string;
@@ -15,9 +15,9 @@ interface Event {
 }
 
 @Component({
-  selector: 'app-eventos',
-  templateUrl: './eventos.component.html',
-  styleUrls: ['./eventos.component.css'],
+  selector: 'app-events',
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.css'],
 })
 export class EventsComponent implements OnInit {
   userId: string = '';
@@ -30,7 +30,7 @@ export class EventsComponent implements OnInit {
   description: string = '';
 
   constructor(
-    private eventosService: EventosService,
+    private eventsService: EventsService,
     private router: Router,
     private authService: AuthService
   ) {}
@@ -45,11 +45,9 @@ export class EventsComponent implements OnInit {
   }
 
   loadEvents(): void {
-    this.eventosService
-      .getEventosPorAnfitrion(this.userId)
-      .subscribe((data: any[]) => {
-        this.events = data;
-      });
+    this.eventsService.getEventsByHost(this.userId).subscribe((data: any[]) => {
+      this.events = data;
+    });
   }
 
   createEvent() {
@@ -66,7 +64,7 @@ export class EventsComponent implements OnInit {
         userId: userId,
       };
 
-      this.eventosService.crearEvento(newEvent).subscribe({
+      this.eventsService.createEvent(newEvent).subscribe({
         next: () => {
           alert('Event successfully created');
           this.loadEvents();

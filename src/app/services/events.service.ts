@@ -17,23 +17,23 @@ interface Event {
 @Injectable({
   providedIn: 'root',
 })
-export class EventosService {
+export class EventsService {
   private apiUrl = 'http://localhost:3000/events'; // URL base para eventos
 
   constructor(private http: HttpClient) {}
 
   // Obtener los eventos de un anfitrión específico
-  getEventosPorAnfitrion(anfitrionId: string): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.apiUrl}?userId=${anfitrionId}`);
+  getEventsByHost(hostId: string): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.apiUrl}?userId=${hostId}`);
   }
 
   // Crear un nuevo evento
-  crearEvento(evento: Event): Observable<Event> {
-    return this.http.post<Event>(this.apiUrl, evento);
+  createEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.apiUrl, event);
   }
 
   // Verificar el código del evento
-  verificarCodigoEvento(codigo: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}?codigo=${codigo}`);
+  verifyEventCode(code: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}?code=${code}`);
   }
 }

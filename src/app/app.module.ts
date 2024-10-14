@@ -6,18 +6,18 @@ import { HttpClientModule } from '@angular/common/http'; // Importar HttpClientM
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { ListaRegalosComponent } from './lista-regalos/lista-regalos.component';
-import { IngresoCodigoInvitadoComponent } from './ingreso-codigo-invitado/ingreso-codigo-invitado.component';
-import { RegalosInvitadoComponent } from './regalos-invitado/regalos-invitado.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { MenuInvitadoComponent } from './menu-invitado/menu-invitado.component';
-import { EventsComponent } from './eventos/eventos.component';
+import { GiftListComponent } from './components/gift-list/gift-list.component';
+import { IngresoCodigoInvitadoComponent } from './components/ingreso-codigo-invitado/ingreso-codigo-invitado.component';
+import { RegalosInvitadoComponent } from './components/regalos-invitado/regalos-invitado.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { MenuInvitadoComponent } from './components/menu-invitado/menu-invitado.component';
+import { EventsComponent } from './components/events/events.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaRegalosComponent,
+    GiftListComponent,
     IngresoCodigoInvitadoComponent,
     RegalosInvitadoComponent,
     LoginComponent,

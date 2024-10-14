@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ListaRegalosComponent } from './lista-regalos/lista-regalos.component';
-import { IngresoCodigoInvitadoComponent } from './ingreso-codigo-invitado/ingreso-codigo-invitado.component';
-import { EventsComponent } from './eventos/eventos.component';
-import { MenuInvitadoComponent } from './menu-invitado/menu-invitado.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { GiftListComponent } from './components/gift-list/gift-list.component';
+import { IngresoCodigoInvitadoComponent } from './components/ingreso-codigo-invitado/ingreso-codigo-invitado.component';
+import { EventsComponent } from './components/events/events.component';
+import { MenuInvitadoComponent } from './components/menu-invitado/menu-invitado.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'eventos', component: EventsComponent },
-  { path: 'eventos/:eventoId/regalos', component: ListaRegalosComponent },
+  { path: 'events', component: EventsComponent },
+  { path: 'events/:eventId/gifts', component: GiftListComponent },
   {
     path: 'ingreso-codigo-invitado',
     component: IngresoCodigoInvitadoComponent,

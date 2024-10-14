@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventosService } from '../eventos.service';
-import { RegalosService } from '../regalos.service';
+import { EventsService } from '../../services/events.service';
+import { GiftsService } from '../../services/gifts.service';
 
 @Component({
   selector: 'app-menu-invitado',
   templateUrl: './menu-invitado.component.html',
-  styleUrls: ['./menu-invitado.component.css']
+  styleUrls: ['./menu-invitado.component.css'],
 })
 export class MenuInvitadoComponent implements OnInit {
   evento: any = {};
   regalos: any[] = [];
 
   constructor(
-    private eventosService: EventosService,
-    private regalosService: RegalosService,
+    private eventsService: EventsService,
+    private giftsService: GiftsService,
     private route: ActivatedRoute
   ) {}
 
@@ -26,7 +26,7 @@ export class MenuInvitadoComponent implements OnInit {
   }
 
   cargarEvento(codigo: string): void {
-    this.eventosService.verificarCodigoEvento(codigo).subscribe((eventos: any[]) => {
+    this.eventsService.verifyEventCode(codigo).subscribe((eventos: any[]) => {
       if (eventos.length > 0) {
         this.evento = eventos[0];
         this.cargarRegalos(this.evento.id); // Cargar regalos asociados al evento
@@ -37,7 +37,7 @@ export class MenuInvitadoComponent implements OnInit {
   }
 
   cargarRegalos(eventoId: string): void {
-    this.regalosService.getRegalosPorEvento(eventoId).subscribe((regalos: any[]) => {
+    this.giftsService.getGiftsByEvent(eventoId).subscribe((regalos: any[]) => {
       this.regalos = regalos;
     });
   }
@@ -45,7 +45,7 @@ export class MenuInvitadoComponent implements OnInit {
   seleccionarRegalo(regalo: any): void {
     if (!regalo.isSelected) {
       regalo.isSelected = true;
-      this.regalosService.actualizarRegalo(regalo).subscribe(() => {
+      this.giftsService.updateGift(regalo).subscribe(() => {
         alert('Regalo seleccionado con éxito');
       });
     } else {

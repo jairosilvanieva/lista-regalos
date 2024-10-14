@@ -85,6 +85,34 @@
       "description": "123",
       "isSelected": true,
       "eventId": "1"
+    },
+    {
+      "id": "x20hz9078",
+      "name": "testRegalo",
+      "description": "testRegalo",
+      "isSelected": false,
+      "eventId": "2"
+    },
+    {
+      "id": "9t1p5xhx3",
+      "name": "testRegaloa",
+      "description": "testRegaloa",
+      "isSelected": false,
+      "eventId": "2"
+    },
+    {
+      "id": "6251ysl58",
+      "name": "testRegaloa2",
+      "description": "testRegaloa2",
+      "isSelected": false,
+      "eventId": "2"
+    },
+    {
+      "id": "7yxv0oumb",
+      "name": "aa",
+      "description": "ss",
+      "isSelected": false,
+      "eventId": "2"
     }
   ],
   "guests": [
@@ -135,6 +163,13 @@
       "nombre": "ulo",
       "apellido": "ape",
       "dni": "1234",
+      "eventId": "1"
+    },
+    {
+      "id": "fb58",
+      "nombre": "asd",
+      "apellido": "asd",
+      "dni": "asd",
       "eventId": "1"
     }
   ]

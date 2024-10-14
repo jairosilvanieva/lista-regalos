@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { RegalosService } from '../regalos.service';
+import { GiftsService } from '../../services/gifts.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-regalos-invitado',
   templateUrl: './regalos-invitado.component.html',
-  styleUrls: ['./regalos-invitado.component.css']
+  styleUrls: ['./regalos-invitado.component.css'],
 })
 export class RegalosInvitadoComponent implements OnInit {
   listaRegalos: any[] = [];
   eventoId: string = '';
 
   constructor(
-    private regalosService: RegalosService,
+    private giftsService: GiftsService,
     private route: ActivatedRoute
   ) {}
 
@@ -26,16 +26,18 @@ export class RegalosInvitadoComponent implements OnInit {
 
   obtenerRegalos(): void {
     if (this.eventoId) {
-      this.regalosService.getRegalosPorEvento(this.eventoId).subscribe((regalos: any[]) => {
-        this.listaRegalos = regalos;
-      });
+      this.giftsService
+        .getGiftsByEvent(this.eventoId)
+        .subscribe((regalos: any[]) => {
+          this.listaRegalos = regalos;
+        });
     }
   }
 
   seleccionarRegalo(regalo: any): void {
     if (!regalo.isSelected) {
       regalo.isSelected = true;
-      this.regalosService.actualizarRegalo(regalo).subscribe(() => {
+      this.giftsService.updateGift(regalo).subscribe(() => {
         alert('Regalo seleccionado con éxito');
       });
     } else {

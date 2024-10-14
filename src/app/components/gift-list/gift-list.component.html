@@ -1,0 +1,38 @@
+<section class="container flex items-start justify-between mt-12">
+  <div>
+    <h2 class="mb-6 text-2xl font-bold">Lista de Regalos</h2>
+    <ul>
+      <li *ngFor="let gift of gifts">
+        {{ gift.name }} - {{ gift.description }}
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h2 class="mb-6 text-2xl font-bold">Agregar un nuevo regalo</h2>
+    <form (ngSubmit)="addGift()">
+      <div class="input-container">
+        <label for="nombre">Nombre del regalo:</label>
+        <input
+          type="text"
+          id="nombre"
+          [(ngModel)]="newGift.name"
+          name="nombre"
+          required
+        />
+      </div>
+
+      <div class="input-container">
+        <label for="descripcion">Descripción:</label>
+        <input
+          type="text"
+          id="descripcion"
+          [(ngModel)]="newGift.description"
+          name="descripcion"
+          required
+        />
+      </div>
+
+      <button type="submit">Agregar Regalo</button>
+    </form>
+  </div>
+</section>
