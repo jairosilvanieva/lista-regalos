@@ -6,12 +6,8 @@
       </li>
       <li><a routerLink="/register">Registro</a></li>
       <li>
-        <a
-          class="cursor-pointer"
-          [routerLink]="isAuthenticated() ? null : '/login'"
-          (click)="isAuthenticated() ? logout() : null"
-          >{{ isAuthenticated() ? "Logout" : "Login" }}</a
-        >
+        <a class="cursor-pointer" [routerLink]="isAuthenticated() ? null : '/login'"
+          (click)="isAuthenticated() ? logout() : null">{{ isAuthenticated() ? "Logout" : "Login" }}</a>
       </li>
     </ul>
   </nav>

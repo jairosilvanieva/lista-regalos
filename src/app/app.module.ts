@@ -27,7 +27,7 @@ import { EventsComponent } from './components/events/events.component';
     BrowserModule,
     FormsModule,
     CommonModule,
-    HttpClientModule, // Agregar HttpClientModule para el uso de HttpClient
+    HttpClientModule, // Añadir HttpClientModule para el uso de HttpClient
     AppRoutingModule,
   ],
   providers: [],

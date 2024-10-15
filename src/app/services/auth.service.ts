@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/users'; // URL where the users list is
+  private apiUrl = 'http://localhost:3000/users'; // URL donde se encuentra la lista de usuarios
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  // Login by fetching the user from the backend
+  // Iniciar sesión obteniendo el usuario desde el backend
   login(email: string, password: string): Observable<string | null> {
     return this.http.get<any[]>(this.apiUrl).pipe(
       map((users) => {
@@ -21,32 +21,32 @@ export class AuthService {
         );
         return user ? user.id : null;
       }),
-      catchError(() => of(null)) // In case of error, return null
+      catchError(() => of(null)) // En caso de error, devolver null
     );
   }
 
-  // Store the userId
+  // Almacenar el userId
   saveSession(userId: string): void {
     localStorage.setItem('userId', userId);
   }
 
-  // Logout
+  // Cerrar sesión
   logout(): void {
     localStorage.removeItem('userId');
     this.router.navigate(['/login']);
   }
 
-  // Get the current user ID
+  // Obtener el ID del usuario actual
   getUserId(): string | null {
     return localStorage.getItem('userId');
   }
 
-  // Check if the user is authenticated
+  // Verificar si el usuario está autenticado
   isAuthenticated(): boolean {
     return localStorage.getItem('userId') !== null;
   }
 
-  // Register a new user
+  // Registrar un nuevo usuario
   registerUser(user: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, user);
   }
