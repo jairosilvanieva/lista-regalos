@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GiftListComponent } from './components/gift-list/gift-list.component';
 import { GuestComponent } from './components/guest/guest.component';
-import { RegalosInvitadoComponent } from './components/regalos-invitado/regalos-invitado.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { GuestMenuComponent } from './components/guest-menu/guest-menu.component';
@@ -19,7 +18,6 @@ import { EventsComponent } from './components/events/events.component';
     AppComponent,
     GiftListComponent,
     GuestComponent,
-    RegalosInvitadoComponent,
     LoginComponent,
     RegisterComponent,
     GuestMenuComponent,
