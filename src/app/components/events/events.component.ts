@@ -2,17 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { AuthService } from '../../services/auth.service';
-
-interface Event {
-  id: string;
-  eventType: string;
-  location: string;
-  date: string;
-  time: string;
-  description: string;
-  code: string;
-  userId: string;
-}
+import { Event } from '../../interfaces';
 
 @Component({
   selector: 'app-events',
@@ -20,23 +10,24 @@ interface Event {
   styleUrls: ['./events.component.css'],
 })
 export class EventsComponent implements OnInit {
-  userId: string = '';
-  events: Event[] = [];
+  // Declaración de propiedades del componente para almacenar datos del evento y lista de eventos
+  date: string = '';
+  description: string = '';
   eventId: string = '';
+  events: Event[] = [];
   eventType: string = '';
   location: string = '';
-  date: string = '';
   time: string = '';
-  description: string = '';
+  userId: string = '';
 
   constructor(
+    private authService: AuthService,
     private eventsService: EventsService,
-    private router: Router,
-    private authService: AuthService
+    private router: Router
   ) {}
 
+  // Inicializa el componente y carga los eventos si hay un usuario autenticado
   ngOnInit(): void {
-    // Assuming userId is stored in localStorage after login
     this.userId = localStorage.getItem('userId') || '';
 
     if (this.userId) {
@@ -44,12 +35,14 @@ export class EventsComponent implements OnInit {
     }
   }
 
+  // Carga los eventos del usuario actual
   loadEvents(): void {
     this.eventsService.getEventsByHost(this.userId).subscribe((data: any[]) => {
       this.events = data;
     });
   }
 
+  // Crea un nuevo evento
   createEvent() {
     const userId = this.authService.getUserId();
     if (userId) {
@@ -77,10 +70,12 @@ export class EventsComponent implements OnInit {
     }
   }
 
+  // Genera un ID único para un nuevo evento
   generateUniqueId(): string {
     return Math.random().toString(36).substr(2, 9);
   }
 
+  // Genera un código único para un nuevo evento
   generateUniqueCode(): string {
     let uniqueCode = '';
     let codeExists = true;
@@ -93,10 +88,12 @@ export class EventsComponent implements OnInit {
     return uniqueCode;
   }
 
+  // Navega a la página de selección de regalos para un evento específico
   selectGifts(eventId: string) {
     this.router.navigate(['/events', eventId, 'gifts']);
   }
 
+  // Cierra la sesión del usuario actual
   logout() {
     this.authService.logout();
   }

@@ -16,12 +16,12 @@ import { EventsComponent } from './components/events/events.component';
 @NgModule({
   declarations: [
     AppComponent,
+    EventsComponent,
     GiftListComponent,
     GuestComponent,
+    GuestMenuComponent,
     LoginComponent,
     RegisterComponent,
-    GuestMenuComponent,
-    EventsComponent,
   ],
   imports: [
     BrowserModule,

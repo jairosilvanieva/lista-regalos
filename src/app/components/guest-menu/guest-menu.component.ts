@@ -1,26 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { GiftsService } from '../../services/gifts.service';
-
-interface Event {
-  id: string;
-  eventType: string;
-  location: string;
-  date: string;
-  time: string;
-  description: string;
-  code: string;
-  userId: string;
-}
-
-interface Gift {
-  id: string;
-  name: string;
-  description: string;
-  isSelected: boolean;
-  eventId: string; // Asociar el regalo a un evento específico
-}
+import { Event, Gift } from '../../interfaces';
 
 @Component({
   selector: 'app-guest-menu',
@@ -43,7 +24,6 @@ export class GuestMenuComponent implements OnInit {
   constructor(
     private eventsService: EventsService,
     private giftsService: GiftsService,
-    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {

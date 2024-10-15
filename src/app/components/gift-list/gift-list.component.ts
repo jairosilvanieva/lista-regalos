@@ -2,14 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { GiftsService } from '../../services/gifts.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Gift } from '../../interfaces';
 
-interface Gift {
-  id: string;
-  name: string;
-  description: string;
-  isSelected: boolean;
-  eventId: string; // Asociar el regalo a un evento específico
-}
 
 @Component({
   selector: 'app-gift-list',

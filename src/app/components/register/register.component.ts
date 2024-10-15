@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  events: any[];
-}
+import { User } from '../../interfaces';
 
 @Component({
   selector: 'app-register',
