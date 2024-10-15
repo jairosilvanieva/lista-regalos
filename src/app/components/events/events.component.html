@@ -14,32 +14,23 @@
     <form (ngSubmit)="createEvent()" class="mt-0">
       <div class="input-container">
         <label for="tipoEvento">Tipo de Evento:</label>
-        <input
-          type="text"
-          id="tipoEvento"
-          [(ngModel)]="eventType"
-          name="tipoEvento"
-        />
+        <input [(ngModel)]="eventType" id="tipoEvento" name="tipoEvento" required type="text" />
       </div>
       <div class="input-container">
         <label for="lugar">Lugar:</label>
-        <input type="text" id="lugar" [(ngModel)]="location" name="lugar" />
+        <input [(ngModel)]="location" id="lugar" name="lugar" required type="text" />
       </div>
       <div class="input-container">
         <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" [(ngModel)]="date" name="fecha" />
+        <input [(ngModel)]="date" id="fecha" name="fecha" required type="date" />
       </div>
       <div class="input-container">
         <label for="hora">Hora:</label>
-        <input type="time" id="hora" [(ngModel)]="time" name="hora" />
+        <input [(ngModel)]="time" id="hora" name="hora" required type="time" />
       </div>
       <div class="input-container">
         <label for="descripcion">Descripción:</label>
-        <textarea
-          id="descripcion"
-          [(ngModel)]="description"
-          name="descripcion"
-        ></textarea>
+        <textarea [(ngModel)]="description" id="descripcion" name="descripcion" required></textarea>
       </div>
       <button type="submit">Crear Evento</button>
     </form>
