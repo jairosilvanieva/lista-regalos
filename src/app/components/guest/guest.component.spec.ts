@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IngresoCodigoInvitadoComponent } from './ingreso-codigo-invitado.component';
+import { IngresoCodigoInvitadoComponent } from './guest.component';
 
 describe('IngresoCodigoInvitadoComponent', () => {
   let component: IngresoCodigoInvitadoComponent;

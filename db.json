@@ -90,7 +90,7 @@
       "id": "x20hz9078",
       "name": "testRegalo",
       "description": "testRegalo",
-      "isSelected": false,
+      "isSelected": true,
       "eventId": "2"
     },
     {
@@ -122,55 +122,6 @@
       "apellido": "rulito",
       "dni": "1234",
       "codigoEvento": "OQRSQPQ4"
-    },
-    {
-      "id": "9ea3",
-      "nombre": "rulo",
-      "apellido": "rulito",
-      "dni": "1234",
-      "eventId": "1"
-    },
-    {
-      "id": "1dea",
-      "nombre": "pepe",
-      "apellido": "argento",
-      "dni": "12345",
-      "eventId": "1"
-    },
-    {
-      "id": "f025",
-      "nombre": "pepe",
-      "apellido": "ape",
-      "dni": "36071890",
-      "eventId": "1"
-    },
-    {
-      "id": "8e9a",
-      "nombre": "rulo",
-      "apellido": "rulito",
-      "dni": "1234",
-      "eventId": "1"
-    },
-    {
-      "id": "8053",
-      "nombre": "ulo",
-      "apellido": "rulito",
-      "dni": "1234",
-      "eventId": "1"
-    },
-    {
-      "id": "7635",
-      "nombre": "ulo",
-      "apellido": "ape",
-      "dni": "1234",
-      "eventId": "1"
-    },
-    {
-      "id": "fb58",
-      "nombre": "asd",
-      "apellido": "asd",
-      "dni": "asd",
-      "eventId": "1"
     }
   ]
 }

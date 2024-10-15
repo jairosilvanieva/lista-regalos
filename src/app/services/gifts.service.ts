@@ -43,7 +43,7 @@ export class GiftsService {
 
   // Verificar el código del evento
   verifyEventCode(code: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.eventsUrl}?codigo=${code}`);
+    return this.http.get<any[]>(`${this.eventsUrl}?code=${code}`);
   }
 
   // Registrar un invitado

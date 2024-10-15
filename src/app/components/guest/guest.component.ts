@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { GiftsService } from '../../services/gifts.service';
 
 @Component({
-  selector: 'app-ingreso-codigo-invitado',
-  templateUrl: './ingreso-codigo-invitado.component.html',
-  styleUrls: ['./ingreso-codigo-invitado.component.css'],
+  selector: 'app-guest',
+  templateUrl: './guest.component.html',
+  styleUrls: ['./guest.component.css'],
 })
-export class IngresoCodigoInvitadoComponent {
-  codigoEvento: string = '';
+export class GuestComponent {
+  eventCode: string = '';
   nombreInvitado: string = '';
   apellidoInvitado: string = '';
   dniInvitado: string = '';
@@ -16,7 +16,7 @@ export class IngresoCodigoInvitadoComponent {
   constructor(private giftsService: GiftsService, private router: Router) {}
 
   ingresarComoInvitado() {
-    this.giftsService.verifyEventCode(this.codigoEvento).subscribe(
+    this.giftsService.verifyEventCode(this.eventCode).subscribe(
       (eventos: any[]) => {
         if (eventos.length > 0) {
           const evento = eventos[0];
@@ -29,8 +29,8 @@ export class IngresoCodigoInvitadoComponent {
 
           this.giftsService.registerGuest(invitado).subscribe(
             () => {
-              localStorage.setItem('codigoEvento', this.codigoEvento);
-              this.router.navigate(['/menu-invitado']);
+              localStorage.setItem('eventCode', this.eventCode);
+              this.router.navigate(['/guest/events', this.eventCode, 'gifts']);
             },
             (error: any) => {
               console.error('Error al registrar el invitado:', error);

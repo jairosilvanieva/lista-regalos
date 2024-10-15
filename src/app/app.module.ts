@@ -7,22 +7,22 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { GiftListComponent } from './components/gift-list/gift-list.component';
-import { IngresoCodigoInvitadoComponent } from './components/ingreso-codigo-invitado/ingreso-codigo-invitado.component';
+import { GuestComponent } from './components/guest/guest.component';
 import { RegalosInvitadoComponent } from './components/regalos-invitado/regalos-invitado.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { MenuInvitadoComponent } from './components/menu-invitado/menu-invitado.component';
+import { GuestMenuComponent } from './components/guest-menu/guest-menu.component';
 import { EventsComponent } from './components/events/events.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GiftListComponent,
-    IngresoCodigoInvitadoComponent,
+    GuestComponent,
     RegalosInvitadoComponent,
     LoginComponent,
     RegisterComponent,
-    MenuInvitadoComponent,
+    GuestMenuComponent,
     EventsComponent,
   ],
   imports: [
